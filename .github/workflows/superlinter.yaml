@@ -4,7 +4,10 @@ on: push
 jobs:
   super-linter:
     name: Lint code base
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-lastest, windows-latset, macos-latest]
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4.2.2
